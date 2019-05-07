@@ -1,0 +1,87 @@
+{
+    "title": "Movie Reviews",
+    "description": "With the Movie Reviews API, you can search New York Times movie reviews by keyword and get lists of NYT Critics' Picks.",
+    "docsUrl": "http://developer.nytimes.com/",
+    "url": "https://api.apis.guru/v2/specs/nytimes.com/movie_reviews/2.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.nytimes.com/svc/movies/v2",
+                    "https://api.nytimes.com/svc/movies/v2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apikey": {
+                "label": "api-key (apikey)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_critics__resource_type__json": {
+            "main": "./lib/actions/get_critics__resource_type__json.js",
+            "title": "get_critics__resource_type__json",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_critics__resource_type__json.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_reviews_search_json": {
+            "main": "./lib/actions/get_reviews_search_json.js",
+            "title": "get_reviews_search_json",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_reviews_search_json.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_reviews__resource_type__json": {
+            "main": "./lib/actions/get_reviews__resource_type__json.js",
+            "title": "get_reviews__resource_type__json",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_reviews__resource_type__json.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

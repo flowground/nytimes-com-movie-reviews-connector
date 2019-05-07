@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "offset": {
+            "required": false,
+            "type": "integer",
+            "default": 20
+        },
+        "order": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "by-title",
+                "by-publication-date",
+                "by-opening-date"
+            ],
+            "default": "by-publication-date"
+        },
+        "resource_type": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "all",
+                "picks"
+            ]
+        }
+    }
+}
